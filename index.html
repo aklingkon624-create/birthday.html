@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      overflow: hidden;
+    }
+    .card {
+      background: #ffffff;
+      padding: 30px 25px;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      color: #ff4d6d;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #333;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .cake {
+      font-size: 70px;
+      margin: 15px 0;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 25px;
+      background: #ff4d6d;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e63956;
+    }
+    iframe {
+      margin-top: 20px;
+      border-radius: 15px;
+    }
+    .floatingText {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      color: #ffeb3b;
+      text-shadow: 2px 2px 8px #ff4d6d;
+      animation: floatText 3s ease-in-out infinite;
+      z-index: 3;
+    }
+    @keyframes floatText {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-20px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Start Screen -->
+  <div class="card" id="startScreen">
+    <h1>🎁 A Small Surprise</h1>
+    <p>Someone special made this just for you 💖</p>
+    <button onclick="startSurprise()">Click to Open 🎂</button>
+  </div>
+
+  <!-- Birthday Screen -->
+  <div class="card" id="birthdayScreen" style="display:none;">
+    <div class="cake">🎂</div>
+    <h1>Happy Birthday!</h1>
+    <h2 id="name">Dear Pookie Giraffe</h2>
+    <p>
+      Happy birthday, Pookiee! I don’t know how or when you became this important, but you truly are. Your smile makes everything better, and honestly, life wouldn’t be the same without you.<br><br>
+      I hope I get the chance to hit you again this year too 🤭<br>
+      And by hit, I mean annoy you, tease you nonstop, and torture you with my presence like always.<br>
+      Don’t worry—it’s all part of my love language 😌💥<br>
+      Stay ready, Pookiee. You’re not escaping me this year either!
+    </p>
+
+    <div style="margin-top:25px;">
+      <img src="https://media.giphy.com/media/od5H3PmEG5EVq/giphy.gif" alt="Cute Hug GIF" style="width:200px;border-radius:15px;" />
+      <p style="margin-top:10px;color:#ff4d6d;font-weight:600;">A hug from mee 🤗🧸</p>
+    </div>
+
+    <button id="musicBtn" onclick="playMusic()" style="background:#6c63ff;">Play Birthday Tune 🎵</button>
+
+    <div id="musicContainer"></div>
+
+    <div class="footer" id="from">— From Moon</div>
+  </div>
+
+  <!-- Floating Birthday Text -->
+  <div class="floatingText" id="floatingText" style="display:none;">🎉 Happy Birthday! 🎉</div>
+
+  <script>
+    const personName = "Pookie Giraffe";
+    const senderName = "Moon";
+
+    document.getElementById('name').innerText = "Dear " + personName;
+    document.getElementById('from').innerText = "— From " + senderName;
+
+    function startSurprise() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('birthdayScreen').style.display = 'block';
+      document.getElementById('floatingText').style.display = 'block';
+    }
+
+    function playMusic() {
+      const musicContainer = document.getElementById('musicContainer');
+      musicContainer.innerHTML = `<iframe width="0" height="0" src="https://www.youtube.com/embed/c6TxOGl7wOI?autoplay=1&loop=1&playlist=c6TxOGl7wOI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      document.getElementById('musicBtn').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
